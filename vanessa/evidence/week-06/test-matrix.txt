@@ -1,0 +1,11 @@
+TEST MATRIX PERTEMUAN 6
+
+NO | TEST                 | EXPECTED / ACTUAL                         | STATUS
+---+----------------------+-------------------------------------------+-------
+1  | Form Lengkap         | Paparan borang lengkap berfungsi          | PASS
+2  | Ringkasan Mahasiswa  | Data kemasukan mahasiswa dipaparkan tepat | PASS
+3  | Ringkasan Guru       | Maklumat guru dipaparkan dengan betul     | PASS
+4  | Checkbox Minat       | Pilihan pelbagai minat berjaya dikesan    | PASS
+5  | Minat Kosong         | Sistem mengendalikan nilai lalai dengan baik| PASS
+6  | History Dummy        | Sejarah data simulasi dipaparkan teratur  | PASS
+7  | Navigasi & Integrasi | Pautan menu berfungsi tanpa ralat         | PASS

@@ -1,0 +1,11 @@
+PERBEDAAN LOCALHOST VS HOSTING (PERTEMUAN 6)
+
+1. Localhost (Development Environment):
+   - Persekitaran ujian dijalankan sepenuhnya di komputer tempatan menggunakan pelayan lokal (XAMPP / Laragon).
+   - Menggunakan pautan URL seperti http://localhost/vanessa/
+   - Sesuai untuk fasa pembangunan, debugging kod, dan pengujian fitur aplikasi sebelum disiarkan ke internet.
+
+2. Hosting (Production Environment):
+   - Persekitaran langsung yang boleh diakses oleh pengguna awam di seluruh dunia melalui internet 24/7.
+   - Menggunakan domain rasmi atau subdomain yang disambungkan ke pangkalan data awan (cloud database).
+   - Memerlukan kawalan keselamatan yang ketat (seperti HTTPS/SSL, perlindungan dari SQL Injection, dan tetapan konfigurasi pengeluaran).
