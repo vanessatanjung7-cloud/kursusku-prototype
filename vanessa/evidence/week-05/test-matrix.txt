@@ -1,0 +1,16 @@
+TEST MATRIX PERTEMUAN 5
+
+NO | TEST         | EXPECTED / ACTUAL                         | STATUS
+---+--------------+-------------------------------------------+-------
+1  | Load form    | Form tampil tanpa error                    | PASS
+2  | Required     | Browser menahan field wajib               | PASS
+3  | Email        | Input type=email meminta format benar     | PASS
+4  | Nama pendek  | minlength=3 mencegah submit               | PASS
+5  | GET          | Parameter tampil di query string          | PASS
+6  | POST         | Data submit tidak tampil pada URL         | PASS
+7  | Radio        | Nilai peserta tampil di hasil             | PASS
+8  | Checkbox     | Beberapa minat dapat diterima             | PASS
+9  | Textarea     | Catatan di-escape ketika ditampilkan      | PASS
+10 | Hidden       | source=week-05 diterima                   | PASS
+11 | Mobile       | Layout 1 kolom sekitar 360px              | PASS
+12 | Navigasi     | Link beranda/form/katalog bekerja         | PASS

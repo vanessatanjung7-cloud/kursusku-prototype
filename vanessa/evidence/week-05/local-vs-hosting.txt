@@ -1,0 +1,13 @@
+PERBEDAAN LOCALHOST VS HOSTING (PERTEMUAN 5)
+
+1. Localhost (Development Environment):
+   - Dijalankan pada server lokal komputer (menggunakan XAMPP atau Laragon).
+   - Menggunakan alamat URL lokal seperti http://localhost/vanessa/ atau http://127.0.0.1/.
+   - Hanya dapat diakses oleh komputer/perangkat itu sendiri secara offline/lokal.
+   - Database, konfigurasi, dan file disimpan di dalam direktori internal komputer tanpa proteksi internet yang ketat.
+
+2. Hosting (Production Environment):
+   - Dijalankan pada web server publik yang aktif 24/7 di internet.
+   - Menggunakan domain atau subdomain khusus yang bisa diakses secara global.
+   - Dapat diakses oleh siapa saja di seluruh dunia melalui jaringan internet.
+   - Memerlukan konfigurasi keamanan tambahan seperti sertifikat SSL/HTTPS, manajemen hak akses file, dan proteksi database.

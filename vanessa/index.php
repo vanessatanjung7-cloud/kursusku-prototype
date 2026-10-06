@@ -1,253 +1,226 @@
-<?php
-
-declare(strict_types=1);
-
-require_once __DIR__ . '/helpers.php';
-
-$siteName = 'KursusKu';
-$tagline = 'Belajar Teknologi, Bangun Masa Depan';
-$year = date('Y');
-
-$courses = [
-    [
-        'code' => 'WEB-01',
-        'name' => ' Web Dasar ',
-        'fee' => 200000,
-        'quota' => 30,
-        'registered' => 12,
-        'start_date' => '2026-09-21',
-    ],
-    [
-        'code' => 'PHP-01',
-        'name' => 'PHP Dasar',
-        'fee' => 250000,
-        'quota' => 30,
-        'registered' => 18,
-        'start_date' => '2026-09-22',
-    ],
-    [
-        'code' => 'PHP-02',
-        'name' => 'PHP Lanjutan',
-        'fee' => 300000,
-        'quota' => 25,
-        'registered' => 24,
-        'start_date' => '2026-09-24',
-    ],
-    [
-        'code' => 'LAR-01',
-        'name' => 'Laravel Fundamental',
-        'fee' => 350000,
-        'quota' => 25,
-        'registered' => 25,
-        'start_date' => '2026-09-28',
-    ],
-    [
-        'code' => 'DB-01',
-        'name' => 'MySQL Dasar',
-        'fee' => 275000,
-        'quota' => 20,
-        'registered' => 0,
-        'start_date' => '2026-10-01',
-    ],
-    [
-        'code' => 'UI-01',
-        'name' => 'UI Web Dasar',
-        'fee' => 225000,
-        'quota' => 35,
-        'registered' => 9,
-        'start_date' => '2026-10-03',
-    ],
-];
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Prototype KursusKu untuk praktikum Pemrograman Web III: PHP, HTML, array, function, dan tabel dinamis.">
-    <title><?= htmlspecialchars($siteName) ?> | Pemrograman Web III</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KursusKu - Belajar Teknologi, Bangun Masa Depan</title>
+    <!-- CSS Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0b5c53;
+            --primary-hover: #084841;
+            --bg-light: #e8f3f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* Navbar Styling */
+        .navbar-custom {
+            background-color: var(--primary-color);
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .navbar-custom .nav-link {
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            opacity: 0.9;
+        }
+
+        .navbar-custom .nav-link:hover {
+            opacity: 1;
+            color: #ffffff;
+        }
+
+        .btn-nav-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 4px 15px;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .btn-nav-action {
+            background-color: #ffffff;
+            color: #333333;
+            font-weight: 600;
+            border-radius: 6px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--bg-light);
+            padding-top: 60px;
+            padding-bottom: 60px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .badge-category {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            color: #111827;
+            font-weight: 800;
+            font-size: 3.2rem;
+            line-height: 1.15;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            color: #4b5563;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .btn-main {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .btn-main:hover {
+            background-color: var(--primary-hover);
+            color: #ffffff;
+        }
+
+        .btn-secondary-custom {
+            background-color: #0d7a71;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .btn-secondary-custom:hover {
+            background-color: #0a6059;
+            color: #ffffff;
+        }
+
+        /* Illustration Mockup */
+        .illustration-card {
+            background-color: #cde6e2;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .screen-mockup {
+            background: #ffffff;
+            border: 12px solid #2d3748;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="index.php" aria-label="Kembali ke beranda KursusKu">
-            <span class="brand-mark" aria-hidden="true">K</span>
-            <span>
-                <strong><?= htmlspecialchars($siteName) ?></strong>
-                <small>Pemrograman Web III</small>
-            </span>
-        </a>
-        <span class="milestone">Milestone 6</span>
-    </div>
-</header>
 
-<nav class="navbar" aria-label="Navigasi utama">
-    <div class="container nav-links">
-        <a href="#beranda">Beranda</a>
-        <a href="#keunggulan">Keunggulan</a>
-        <a href="#katalog">Katalog</a>
-        <a href="#alur">Cara Daftar</a>
-        <a href="#media">Media</a>
-        <a href="#kontak">Kontak</a>
-        <a href="registration.php">Form P5</a>
-        <a href="register.php">Daftar P6</a>
-        <a href="history.php">History</a>
-        <a class="nav-cta" href="fee-calculator.php">Estimasi Biaya</a>
-    </div>
-</nav>
-
-<main>
-    <section id="beranda" class="hero">
-        <div class="container hero-content">
-            <div>
-                <span class="eyebrow">LANDING PAGE KURSUSKU</span>
-                <h1><?= htmlspecialchars($tagline) ?></h1>
-                <p class="lead">Temukan kursus teknologi yang relevan untuk meningkatkan keterampilan melalui pembelajaran bertahap, latihan terarah, dan proyek nyata.</p>
-                <div class="button-row">
-                    <a href="#katalog" class="button">Lihat Katalog Kursus</a>
-                    <a href="register.php" class="button">Daftar Sekarang</a>
-                    <a href="fee-calculator.php" class="button button-secondary">Hitung Estimasi Biaya</a>
-                </div>
-                <div class="hero-meta" aria-label="Ringkasan proyek">
-                    <span><strong>6</strong> kursus</span>
-                    <span><strong>4</strong> function reusable</span>
-                    <span><strong>PHP</strong> server-side</span>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <img src="assets/images/hero-kursus.jpg" alt="Ilustrasi mahasiswa sedang mengikuti kegiatan kursus komputer" class="hero-image">
-            </div>
-        </div>
-    </section>
-
-    <section id="keunggulan" class="section">
-        <div class="container">
-            <div class="section-heading">
-                <span class="eyebrow">MENGAPA KURSUSKU?</span>
-                <h2>Belajar terarah dari konsep hingga proyek</h2>
-            </div>
-            <div class="feature-grid">
-                <article class="feature-card">
-                    <span class="feature-number">01</span>
-                    <h3>Materi Terarah</h3>
-                    <p>Materi disusun bertahap dari dasar HTML dan PHP sampai logika aplikasi.</p>
-                </article>
-                <article class="feature-card">
-                    <span class="feature-number">02</span>
-                    <h3>Belajar dengan Proyek</h3>
-                    <p>Setiap pertemuan menambah bagian nyata dari satu proyek KursusKu yang sama.</p>
-                </article>
-                <article class="feature-card">
-                    <span class="feature-number">03</span>
-                    <h3>Pendampingan Praktik</h3>
-                    <p>Proses belajar mencakup demonstrasi, testing, debugging, evidence, dan refleksi.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="katalog" class="section section-light">
-        <div class="container">
-            <div class="section-heading section-heading-row">
+    <!-- NAVBAR (NAVIGASI) -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container-fluid px-lg-5">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.php">
+                <span class="bg-white text-dark fw-bold rounded-2 px-2 py-1" style="font-size: 1.1rem;">K</span>
                 <div>
-                    <span class="eyebrow">KATALOG DATA-DRIVEN</span>
-                    <h2>Katalog Kursus</h2>
-                    <p>Data berasal dari array PHP dan dirender menggunakan <code>foreach</code>.</p>
+                    <div class="lh-1 fw-bold" style="font-size: 1.1rem;">KursusKu</div>
+                    <small class="text-white-50" style="font-size: 0.65rem;">Pemrograman Web III</small>
                 </div>
-                <a href="test-functions.php" class="text-link">Lihat 6 test function &rarr;</a>
-            </div>
+            </a>
 
-            <div class="table-wrap">
-                <table class="course-table">
-                    <thead>
-                    <tr>
-                        <th>Kode</th>
-                        <th>Nama Kursus</th>
-                        <th>Biaya</th>
-                        <th>Mulai</th>
-                        <th>Sisa Kursi</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($courses as $course): ?>
-                        <?php
-                        $status = statusKursus($course['quota'], $course['registered']);
-                        $statusClass = $status === 'Penuh' ? 'badge-full' : 'badge-available';
-                        ?>
-                        <tr>
-                            <td><code><?= htmlspecialchars($course['code']) ?></code></td>
-                            <td><?= htmlspecialchars(trim($course['name'])) ?></td>
-                            <td><?= rupiah($course['fee']) ?></td>
-                            <td><?= formatTanggal($course['start_date']) ?></td>
-                            <td><?= sisaKursi($course['quota'], $course['registered']) ?></td>
-                            <td><span class="badge <?= $statusClass ?>"><?= htmlspecialchars($status) ?></span></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-            <p class="table-note">Contoh kondisi: <strong>Laravel Fundamental</strong> penuh, <strong>PHP Lanjutan</strong> tersisa 1 kursi, dan <strong>MySQL Dasar</strong> belum memiliki pendaftar.</p>
-        </div>
-    </section>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <section id="alur" class="section">
-        <div class="container">
-            <div class="section-heading">
-                <span class="eyebrow">ALUR PENDAFTARAN</span>
-                <h2>Cara Mendaftar</h2>
-            </div>
-            <ol class="steps">
-                <li><span>1</span><div><strong>Pilih kursus</strong><p>Tentukan program yang paling sesuai dengan kebutuhan belajar.</p></div></li>
-                <li><span>2</span><div><strong>Isi form pendaftaran</strong><p>Isi form pendaftaran pada Milestone 5-6 dan lanjutkan ke proses PHP.</p></div></li>
-                <li><span>3</span><div><strong>Periksa data</strong><p>Pastikan data dan pilihan kursus sudah benar sebelum dikirim.</p></div></li>
-                <li><span>4</span><div><strong>Tunggu konfirmasi</strong><p>Pendaftaran akan diproses setelah data diterima sistem.</p></div></li>
-            </ol>
-        </div>
-    </section>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#keunggulan">Keunggulan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#katalog">Katalog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cara-daftar">Cara Daftar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#media">Media</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registration.php">Form P5</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Daftar P6</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">History</a></li>
+                </ul>
 
-    <section id="media" class="section section-light">
-        <div class="container media-grid">
-            <div>
-                <span class="eyebrow">MEDIA PEMBELAJARAN</span>
-                <h2>Kenali Program Kami</h2>
-                <p>Gambar dan video disimpan di folder aset agar struktur proyek tetap rapi.</p>
-                <p>Pelajari juga <a href="https://www.php.net/" target="_blank" rel="noopener">dokumentasi resmi PHP</a> untuk referensi sintaks dan fungsi.</p>
-            </div>
-            <div class="media-card">
-                <img src="assets/images/hero-kursus.jpg" alt="Ilustrasi kegiatan belajar pemrograman di KursusKu" loading="lazy">
-                <div class="video-block">
-                    <video controls preload="metadata" poster="assets/img/image1.png">
-                        <source src="assets/video/intro-kursus.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video HTML5.
-                    </video>
-                    <small>Video lokal: <code>assets/video/intro-kursus.mp4</code></small>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="btn-nav-badge">Milestone 6</span>
+                    <a href="registration.php" class="btn-nav-action">Estimasi Biaya</a>
                 </div>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <section id="kontak" class="section contact-section">
-        <div class="container contact-card">
-            <div>
-                <span class="eyebrow">KONTAK</span>
-                <h2>Informasi KursusKu</h2>
-                <p>Prototype pembelajaran untuk Mata Kuliah Pemrograman Web III.</p>
-            </div>
-            <div class="contact-list">
-                <p><strong>Email</strong><br><a href="mailto:kursusku@example.test">kursusku@example.test</a></p>
-                <p><strong>Lokasi latihan</strong><br>Laboratorium Komputer</p>
+    <!-- HERO SECTION -->
+    <section id="beranda" class="hero-section">
+        <div class="container px-lg-5">
+            <div class="row align-items-center g-5">
+                
+                <!-- Text Content -->
+                <div class="col-lg-6">
+                    <div class="badge-category">LANDING PAGE KURSUSKU</div>
+                    <h1 class="hero-title">Belajar Teknologi, Bangun Masa Depan</h1>
+                    <p class="hero-desc">
+                        Temukan kursus teknologi yang relevan untuk meningkatkan keterampilan melalui pembelajaran bertahap, latihan terarah, dan proyek nyata.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#katalog" class="btn btn-main">Lihat Katalog Kursus</a>
+                        <a href="registration.php" class="btn btn-secondary-custom">Daftar Sekarang</a>
+                    </div>
+                </div>
+
+                <!-- Visual Illustration -->
+                <div class="col-lg-6">
+                    <div class="illustration-card">
+                        <div class="screen-mockup mx-auto" style="max-width: 380px;">
+                            <div class="text-center py-4">
+                                <h5 class="fw-bold text-dark mb-1">KursusKu</h5>
+                                <small class="text-muted d-block mb-3" style="font-size: 0.75rem;">Belajar • Praktik • Bangun Proyek</small>
+                                <div class="bg-light rounded p-2 mb-2">
+                                    <div class="bg-secondary bg-opacity-20 rounded py-1 px-3 w-75 mx-auto mb-2"></div>
+                                    <div class="bg-success rounded py-2 px-3 w-50 mx-auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
-</main>
 
-<footer class="footer">
-    <div class="container footer-inner">
-        <small>&copy; <?= htmlspecialchars($year) ?> <?= htmlspecialchars($siteName) ?>. Pemrograman Web III.</small>
-        <small>PHP &middot; HTML &middot; Function &middot; Array &middot; Testing</small>
-    </div>
-</footer>
+    <!-- JS Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
