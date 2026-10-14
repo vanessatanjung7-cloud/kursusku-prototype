@@ -30,22 +30,10 @@
             font-weight: 700;
         }
 
-        .navbar-custom .nav-link {
-            color: #ffffff;
-            font-size: 0.875rem;
-            font-weight: 500;
-            opacity: 0.9;
-        }
-
-        .navbar-custom .nav-link:hover {
-            opacity: 1;
-            color: #ffffff;
-        }
-
         /* Form Card Styling */
         .form-card {
             background: #ffffff;
-            border-radius: 16px;
+            border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             padding: 40px;
             margin-top: 40px;
@@ -53,21 +41,42 @@
         }
 
         .form-label {
-            font-weight: 600;
-            color: #374151;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
         }
 
-        .btn-main {
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 10px 14px;
+            border: 1px solid #d1d5db;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(11, 92, 83, 0.25);
+        }
+
+        /* Section Box Inside Form */
+        .input-group-box {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .btn-custom-primary {
             background-color: var(--primary-color);
             color: #ffffff;
             font-weight: 600;
-            padding: 12px;
+            padding: 10px 20px;
             border-radius: 8px;
             border: none;
-            width: 100%;
+            text-decoration: none;
         }
 
-        .btn-main:hover {
+        .btn-custom-primary:hover {
             background-color: var(--primary-hover);
             color: #ffffff;
         }
@@ -94,53 +103,135 @@
     <!-- FORM CONTAINER -->
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-7">
+            <div class="col-lg-8">
                 <div class="form-card">
+                    
+                    <!-- Header Form -->
                     <div class="text-center mb-4">
-                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 rounded-pill mb-2">MILESTONE 6</span>
-                        <h2 class="fw-bold text-dark">Pendaftaran Kursus</h2>
-                        <p class="text-muted">Silakan isi data diri Anda dengan lengkap dan benar pada form di bawah ini.</p>
+                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 rounded-pill mb-2" style="font-size: 0.75rem;">MILESTONE 6 • FORM LANJUTAN</span>
+                        <h1 class="fw-bold text-dark h2">Daftar Kursus</h1>
+                        <p class="text-muted small">Alur: landing page → form → proses PHP → ringkasan. Belum memakai database.</p>
                     </div>
 
                     <form action="process-registration.php" method="POST">
-                        <div class="mb-3">
-                            <label class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="nama" placeholder="Masukkan nama lengkap" required>
+                        
+                        <!-- Nama & Email -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nama lengkap</label>
+                                <input type="text" class="form-control" name="nama" placeholder="Masukkan nama lengkap" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Masukkan email aktif" required>
+                            </div>
                         </div>
 
+                        <!-- Pilih Kursus -->
                         <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Masukkan email aktif" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Nomor HP</label>
-                            <input type="text" class="form-control" name="no_hp" placeholder="Masukkan nomor HP / WhatsApp" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Pilih Kursus</label>
+                            <label class="form-label">Pilih kursus</label>
                             <select class="form-select" name="kursus" required>
-                                <option value="">-- Pilih Kursus --</option>
+                                <option value="">-- Pilih kursus --</option>
                                 <option value="Web Development">Web Development</option>
                                 <option value="UI/UX Design">UI/UX Design</option>
-                                <option value="Digital Marketing">Digital Marketing</option>
-                                <option value="Data Analysis">Data Analysis</option>
+                                <option value="Data Science">Data Science</option>
                             </select>
                         </div>
 
+                        <!-- Tipe Peserta -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">Tipe peserta</label>
+                            <div class="input-group-box d-flex gap-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipe_peserta" id="mahasiswa" value="Mahasiswa" checked>
+                                    <label class="form-check-label fw-semibold" for="mahasiswa">Mahasiswa</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipe_peserta" id="guru" value="Guru">
+                                    <label class="form-check-label fw-semibold" for="guru">Guru</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipe_peserta" id="umum" value="Umum">
+                                    <label class="form-check-label fw-semibold" for="umum">Umum</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Minat Belajar -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">Minat belajar</label>
+                            <div class="input-group-box d-flex flex-wrap gap-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="minat[]" id="frontend" value="Frontend">
+                                    <label class="form-check-label fw-semibold" for="frontend">Frontend</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="minat[]" id="backend" value="Backend">
+                                    <label class="form-check-label fw-semibold" for="backend">Backend</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="minat[]" id="database" value="Database">
+                                    <label class="form-check-label fw-semibold" for="database">Database</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="minat[]" id="uiux" value="UI/UX">
+                                    <label class="form-check-label fw-semibold" for="uiux">UI/UX</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Metode Belajar & Jumlah Paket -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Metode belajar</label>
+                                <select class="form-select" name="metode" required>
+                                    <option value="">-- Pilih metode --</option>
+                                    <option value="Online">Online</option>
+                                    <option value="Offline">Offline</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Jumlah paket</label>
+                                <select class="form-select" name="jumlah_paket">
+                                    <option value="1">1 paket</option>
+                                    <option value="2">2 paket</option>
+                                    <option value="3">3 paket</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Catatan Tambahan -->
                         <div class="mb-4">
-                            <label class="form-label">Durasi Kursus</label>
-                            <select class="form-select" name="durasi" required>
-                                <option value="1">1 Bulan</option>
-                                <option value="2">2 Bulan</option>
-                                <option value="3">3 Bulan</option>
-                                <option value="4">4 Bulan</option>
-                                <option value="5">5 Bulan</option>
-                            </select>
+                            <label class="form-label">Catatan tambahan</label>
+                            <textarea class="form-control" name="catatan" rows="3"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-main">Daftar Sekarang</button>
+                        <!-- Tombol Aksi / Navigasi -->
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <button type="submit" class="btn btn-custom-primary">Proses Pendaftaran</button>
+                            <a href="history.php" class="btn btn-custom-primary">History Dummy</a>
+                            <a href="loop-lab.php" class="btn btn-custom-primary">Loop Lab</a>
+                        </div>
+
+                        <!-- Fasilitas Tambahan (Fitur Bawah Form) -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">Fasilitas</label>
+                            <div class="input-group-box bg-light">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" name="fasilitas[]" id="sertifikat" value="Sertifikat Digital" checked>
+                                    <label class="form-check-label text-secondary" for="sertifikat">Sertifikat Digital</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" name="fasilitas[]" id="modul" value="Modul & Rekaman Kelas" checked>
+                                    <label class="form-check-label text-secondary" for="modul">Modul & Rekaman Kelas</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="fasilitas[]" id="konsultasi" value="Grup Diskusi Mentoring">
+                                    <label class="form-check-label text-secondary" for="konsultasi">Grup Diskusi Mentoring</label>
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>

@@ -1,46 +1,35 @@
-<?php
-
-declare(strict_types=1);
-
-require __DIR__ . '/helpers.php';
-
-$forItems = [];
-for ($i = 1; $i <= 3; $i++) {
-    $forItems[] = "Paket ke-$i";
-}
-
-$whileItems = [];
-$i = 1;
-while ($i <= 3) {
-    $whileItems[] = "While ke-$i";
-    $i++;
-}
-
-$doWhileItems = [];
-$i = 1;
-do {
-    $doWhileItems[] = "Percobaan ke-$i";
-    $i++;
-} while ($i <= 3);
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loop Lab - KursusKu</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --primary-color: #0b5c53; }
+        body { background-color: #e8f3f1; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .navbar-custom { background-color: var(--primary-color); }
+    </style>
 </head>
-<body class="utility-page">
-<main class="utility-card">
-    <span class="eyebrow">MILESTONE 6 · LOOPING</span>
-    <h1>Loop Lab</h1>
-    <div class="feature-grid">
-        <article class="feature-card"><h2>for</h2><p><?= implode('<br>', array_map('e', $forItems)) ?></p></article>
-        <article class="feature-card"><h2>while</h2><p><?= implode('<br>', array_map('e', $whileItems)) ?></p></article>
-        <article class="feature-card"><h2>do-while</h2><p><?= implode('<br>', array_map('e', $doWhileItems)) ?></p></article>
+<body>
+    <nav class="navbar navbar-custom py-3 text-white">
+        <div class="container">
+            <span class="fw-bold">KursusKu - Loop Lab</span>
+            <a href="registration.php" class="btn btn-light btn-sm fw-semibold">Kembali ke Form</a>
+        </div>
+    </nav>
+    <div class="container my-5">
+        <div class="card p-4 shadow-sm border-0 rounded-4">
+            <h3 class="fw-bold text-dark">Latihan Perulangan (Loop Lab)</h3>
+            <p class="text-muted">Halaman simulasi loop PHP untuk pendaftaran kursus.</p>
+            <ul class="list-group">
+                <?php 
+                for ($i = 1; $i <= 5; $i++) {
+                    echo "<li class='list-group-item'>Paket Kursus ke-$i: Terverifikasi</li>";
+                }
+                ?>
+            </ul>
+        </div>
     </div>
-    <p><a class="button" href="register.php">Kembali</a></p>
-</main>
 </body>
 </html>
