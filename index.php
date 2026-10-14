@@ -163,20 +163,20 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active fw-bold" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="index.php">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link" href="#keunggulan">Keunggulan</a></li>
                     <li class="nav-item"><a class="nav-link" href="#katalog">Katalog</a></li>
                     <li class="nav-item"><a class="nav-link" href="#cara-daftar">Cara Daftar</a></li>
                     <li class="nav-item"><a class="nav-link" href="#media">Media</a></li>
                     <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="registration.php">Form P5</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Daftar P6</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">History</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registration.php">Daftar P6</a></li>
+                    <li class="nav-item"><a class="nav-link" href="history.php">History</a></li>
                 </ul>
 
                 <div class="d-flex align-items-center gap-2">
                     <span class="btn-nav-badge">Milestone 6</span>
-                    <a href="registration.php" class="btn-nav-action">Estimasi Biaya</a>
+                    <a href="fee-calculator.php" class="btn-nav-action">Estimasi Biaya</a>
                 </div>
             </div>
         </div>
