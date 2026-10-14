@@ -80,6 +80,7 @@
 
             <label for="duration">Durasi Kursus</label>
 
+
             <select id="duration" name="duration" required>
 
                 <option value="1">1 Bulan</option>
@@ -90,23 +91,14 @@
 
             </select>
 
-            <!-- Bagian Tombol Aksi (Daftar Sekarang, History Dummy, Loop Lab) -->
-            <div class="button-group" style="display: flex; gap: 10px; margin-top: 15px; margin-bottom: 15px;">
-                <button type="submit" class="button">
-                    Daftar Sekarang
-                </button>
-                <a href="history.php" class="button button-secondary">
-                    History Dummy
-                </a>
-                <a href="loop-lab.php" class="button button-secondary">
-                    Loop Lab
-                </a>
-            </div>
+            <button type="submit">
+                Daftar Sekarang
+            </button>
 
         </form>
 
         <a href="index.php" class="back-link">
-            &larr; Kembali ke Beranda
+            ← Kembali ke Beranda
         </a>
 
     </div>
