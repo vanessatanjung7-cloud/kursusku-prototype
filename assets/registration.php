@@ -80,7 +80,6 @@
 
             <label for="duration">Durasi Kursus</label>
 
-
             <select id="duration" name="duration" required>
 
                 <option value="1">1 Bulan</option>
